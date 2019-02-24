@@ -242,7 +242,7 @@ rug(new_df_steps_per_day$steps)
 # Yes there is a difference in the median but none in the mean. 
 # The median shifted by 1 step, see corresponding summary for both datasets below. 
 # 
-# df_steps_per_day : based original dataset NO REPLACEMENT OF "NA(s)" - mean and median
+# df_steps_per_day : based original dataset NO REPLACEMENT OF "NA(s)"
 summary(df_steps_per_day$steps)
 ```
 
@@ -252,7 +252,7 @@ summary(df_steps_per_day$steps)
 ```
 
 ```r
-# new_df_steps_per_day : based new dataset WITH REPLACEMENT OF "NA(s)" - mean and median
+# new_df_steps_per_day : based new dataset WITH REPLACEMENT OF "NA(s)"
 summary(new_df_steps_per_day$steps)
 ```
 
@@ -317,7 +317,23 @@ names(new_df_by_type_interval_avg) <- c("type","interval", "steps")
   # Are there differences in activity patterns between weekdays and weekends?
   # 
   #  Yes there are visual differences you can easily observed from the graph above.
-  #  The mean, median and max during the weekend are all higher on weekends than
+  #  The mean and median during the weekend are all higher on weekends than
   #   on weekdays. There is also more steps recorded in the morning's during the
-  #   weekday while the weekends are more distributed than weekdays. 
+  #   weekday as opposed to weekends. 
+
+  summary(filter(new_df_by_type_interval_avg, type == "weekday")$steps)
+```
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   0.000   2.247  25.803  35.611  50.854 230.378
+```
+
+```r
+  summary(filter(new_df_by_type_interval_avg, type == "weekend")$steps)
+```
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   0.000   1.241  32.340  42.366  74.654 166.639
 ```
